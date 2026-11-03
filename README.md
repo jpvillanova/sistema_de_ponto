@@ -10,7 +10,7 @@ em [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Status
 
-🚧 **Em desenvolvimento** — módulo de visão funcional (detecção de QR Code em
+**Em desenvolvimento** módulo de visão funcional (detecção de QR Code em
 tempo real, overlay de confirmação e beep). Persistência em banco, regras de
 negócio e integrações estão planejadas no roadmap.
 
