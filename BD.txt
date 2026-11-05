@@ -1,0 +1,32 @@
+// Modelo do banco planejado, em DBML (https://dbml.dbdiagram.io).
+// Ainda não é usado pelo código: o protótipo atual não grava dados.
+
+// Tabela de Funcionários
+Table funcionarios {
+  id integer [primary key, increment]
+  nome varchar
+  cpf varchar [unique]
+  qrcode_token varchar [unique, note: 'O conteúdo que será gerado no QR Code']
+  telefone varchar [note: 'Para envio do WhatsApp']
+  data_criação date
+  ativo boolean [default: true]
+}
+
+// Tabela de Registros de Ponto (Logs)
+Table registros_ponto {
+  id integer [primary key, increment]
+  funcionario_id integer [ref: > funcionarios.id]
+  data_hora timestamp [default: `now()`]
+  tipo_registro varchar [note: 'Entrada ou Saída']
+  sincronizado_nuvem boolean [default: false]
+  validade boolean
+}
+
+// Tabela de Saldo de Horas (Opcional - para performance)
+Table saldo_horas {
+  id integer [primary key, increment]
+  funcionario_id integer [ref: > funcionarios.id]
+  mes_referencia integer
+  ano_referencia integer
+  minutos_acumulados integer [default: 0]
+}
